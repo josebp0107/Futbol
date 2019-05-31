@@ -4,6 +4,8 @@
     Author     : Jose David Ballesteros
 --%>
 
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="edu.CECAR.logica.SentenciaPreparada"%>
 <%@page import="edu.CECAR.logica.Jugador"%>
 <%@page import="edu.CECAR.logica.Equipo"%>
 <%@page import="edu.CECAR.persistencia.ConexionMySQL"%>
@@ -17,12 +19,13 @@
     <body>
         <%
             ConexionMySQL conexionMySQL = new ConexionMySQL();
-            Jugador jugador = new Jugador();
-            jugador.setIdentificacion(Integer.parseInt(request.getParameter("idJugador")));
-            jugador.setNombreCompleto(request.getParameter("nombreJugador"));
-            jugador.setDorsal(Integer.parseInt(request.getParameter("dorsal")));
-            jugador.setPosicion(request.getParameter("posicion"));
-            conexionMySQL.ingresoDatosJugador(jugador);
+            PreparedStatement sentenciaPreparada = SentenciaPreparada.getProcedimientoInsertarJugador();
+            
+            sentenciaPreparada.setInt(1, Integer.parseInt(request.getParameter("idJugador")));
+            sentenciaPreparada.setString(2, (request.getParameter("nombreJugador")));
+            sentenciaPreparada.setInt(3, Integer.parseInt(request.getParameter("dorsal")));
+            sentenciaPreparada.setString(4, (request.getParameter("posicion")));
+            sentenciaPreparada.execute();
             response.sendRedirect("index.html"); 
         
         %>

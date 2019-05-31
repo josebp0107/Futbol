@@ -29,12 +29,14 @@
         </div>
         
         <form action="procedimientoRegistrarEquipo.jsp" method="post" style="width: 700px; margin: 0 auto;">
+            <label>Codigo del equipo</label>
+            <input type="text" class="form-control" name="codigo" placeholder="Codigo del equipo">
             <label>Nombre del equipo</label>
             <input type="text" class="form-control" name="nombreEquipo" placeholder="Nombre del equipo">
             <label>Nombre del entrenador</label>
             <input type="text" class="form-control" name="nombreEntrenador" placeholder="Nombre del equipo"><br>
-            <input type="submit" class="btn btn-primary">
-            <input type="reset" class="btn btn-danger">
+            <input type="submit" class="btn btn-primary" value="Registrar">
+            <input type="reset" class="btn btn-danger" value="Eliminar">
         </form>
     </body>
 </html>
