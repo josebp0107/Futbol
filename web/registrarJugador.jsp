@@ -15,19 +15,20 @@
         <title>Registro de jugador</title>
     </head>
     <body>
-        
         <div id="principal">
-        <h1>Torneo intermunicipal de futbol</h1>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <ul  class="nav nav-tabs">
-                <li class="nav-item active"><a class="nav-link" href="#">Gestionar equipo</a></li>
-                <li class="nav-item active"><a class="nav-link" href="#">Gestionar jugador</a></li>
-                <li class="nav-item active"><a class="nav-link" href="#">Generacion de programacion</a></li>
-                <li class="nav-item active"><a class="nav-link" href="#">Generacion de estadisticas</a></li>
-                <li class="nav-item active"><a class="nav-link" href="#">Gestionar resultados</a></li>  
-            </ul>
-        </nav>
+            <h1>Torneo intermunicipal de futbol</h1>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <ul  class="nav nav-tabs">
+                    <li class="nav-item active"><a class="nav-link" href="registrarEquipo.jsp">Gestionar equipo</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="registrarJugador.jsp">Gestionar jugador</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="ConsultarEquipo.jsp">Consultar equipo</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="ConsultarJugador.jsp">Consultar jugador</a></li>                    <li class="nav-item active"><a class="nav-link" href="#">Generacion de programacion</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="#">Generacion de estadisticas</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="#">Gestionar resultados</a></li>  
+                </ul>
+            </nav>
         </div>
+        
         <form action="registroJugadores.jsp" method="post" style="width: 700px; margin: 0 auto;">
             <label>Identificacion del jugador</label>
             <input type="text" class="form-control" name="idJugador" placeholder="identificacion">
@@ -40,7 +41,7 @@
             <input type="submit" value="Registrar" class="btn btn-primary">
             <input type="submit" value="Consultar" class="btn btn-primary">
             <input type="reset" value="Eliminar" class="btn btn-danger">
-            
+
         </form>
     </body>
 </html>

@@ -20,14 +20,15 @@
         <%
             ConexionMySQL conexionMySQL = new ConexionMySQL();
             PreparedStatement sentenciaPreparada = SentenciaPreparada.getProcedimientoInsertarJugador();
-            
-            sentenciaPreparada.setInt(1, Integer.parseInt(request.getParameter("idJugador")));
-            sentenciaPreparada.setString(2, (request.getParameter("nombreJugador")));
-            sentenciaPreparada.setInt(3, Integer.parseInt(request.getParameter("dorsal")));
-            sentenciaPreparada.setString(4, (request.getParameter("posicion")));
+
+            sentenciaPreparada.setInt(1, 1);
+            sentenciaPreparada.setInt(2, Integer.parseInt(request.getParameter("idJugador")));
+            sentenciaPreparada.setString(3, (request.getParameter("nombreJugador")));
+            sentenciaPreparada.setInt(4, Integer.parseInt(request.getParameter("dorsal")));
+            sentenciaPreparada.setString(5, (request.getParameter("posicion")));
             sentenciaPreparada.execute();
-            response.sendRedirect("index.html"); 
-        
+            response.sendRedirect("index.html");
+
         %>
     </body>
 </html>

@@ -17,13 +17,14 @@
     </head>
     <body>
         <%
+            ConexionMySQL conexionMySQL = new ConexionMySQL();
             PreparedStatement sentenciaPreparada = SentenciaPreparada.getProcedimientoInsertarEquipo();
-            sentenciaPreparada.setInt(1, (Integer.parseInt(request.getParameter("codigo"))));
-            sentenciaPreparada.setString(2, request.getParameter("nombreEquipo"));
-            sentenciaPreparada.setString(3, request.getParameter("nombreEntrenador"));
+            sentenciaPreparada.setInt(1,1);
+            sentenciaPreparada.setInt(2, (Integer.parseInt(request.getParameter("codigo"))));
+            sentenciaPreparada.setString(3, request.getParameter("nombreEquipo"));
+            sentenciaPreparada.setString(4, request.getParameter("nombreEntrenador"));
             sentenciaPreparada.execute();
             response.sendRedirect("index.html"); 
-            
         %>
     </body>
 </html>

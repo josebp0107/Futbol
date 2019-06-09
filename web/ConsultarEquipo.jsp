@@ -1,7 +1,7 @@
 <%-- 
-    Document   : registrarEquipo
-    Created on : 28/05/2019, 10:53:59 PM
-    Author     : Jose David Ballesteros
+    Document   : ConsultarEquipo
+    Created on : 9/06/2019, 04:09:34 PM
+    Author     : KOGARASUMARU
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -12,7 +12,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <link href="estilos.css" rel="stylesheet" type="text/css"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Registrar Equipo</title>
+        <title>Consultar Equipo</title>
     </head>
     <body>
         <div id="principal">
@@ -29,15 +29,11 @@
             </nav>
         </div>
 
-        <form action="procedimientoRegistrarEquipo.jsp" method="post" style="width: 700px; margin: 0 auto;">
-            <label>Codigo del equipo</label>
-            <input type="text" class="form-control" name="codigo" placeholder="Codigo del equipo">
-            <label>Nombre del equipo</label>
-            <input type="text" class="form-control" name="nombreEquipo" placeholder="Nombre del equipo">
-            <label>Nombre del entrenador</label>
-            <input type="text" class="form-control" name="nombreEntrenador" placeholder="Nombre del entrenador"><br>
-            <input type="submit" class="btn btn-primary" value="Registrar">
-            <input type="reset" class="btn btn-danger" value="Eliminar">
+        <form action="ProcedimientoConsultarEquipo.jsp" method="post" style="width: 700px; margin: 0 auto;">
+            <label>Identificacion del Equipo</label>
+            <input type="text" class="form-control" name="idEquipo" placeholder="identificacion">
+            <input type="submit" class="btn btn-primary" value="Consultar">
+            <input type="reset" class="btn btn-danger" value="Limpiar">
         </form>
     </body>
 </html>

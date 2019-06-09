@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-06-2019 a las 00:14:33
--- Versión del servidor: 10.1.38-MariaDB
--- Versión de PHP: 7.3.2
+-- Tiempo de generación: 09-06-2019 a las 23:54:14
+-- Versión del servidor: 10.1.40-MariaDB
+-- Versión de PHP: 7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,66 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `futbol`
 --
+
+DELIMITER $$
+--
+-- Procedimientos
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `gestionarEquipo` (IN `tipoOperacion` INT(1), IN `p_idEquipo` INT, IN `p_nombre` VARCHAR(30), IN `p_nombreEntrenador` VARCHAR(60))  BEGIN
+
+DECLARE numeroRegistros int;
+
+
+
+IF tipoOperacion = 1 THEN
+
+   
+
+ SELECT COUNT(1) INTO numeroRegistros
+    FROM equipo WHERE idEquipo= p_idEquipo;
+    
+    
+    
+
+   
+ IF numeroRegistros = 0 THEN
+   INSERT INTO equipo VALUES (p_idEquipo,p_nombre,p_nombreEntrenador);
+  
+
+    ELSE 
+	SET SQL_SAFE_UPDATES=0;
+    UPDATE equipo SET idEquipo= p_idEquipo,nombre = p_nombre,nombreEntrenador = p_nombreEntrenador
+    WHERE  idEquipo= p_idEquipo;
+
+    END IF;
+END IF;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `gestionarJugador` (IN `tipoOperacion` INT(1), IN `p_idJugador` INT, IN `p_nombres` VARCHAR(50), IN `p_dorsal` INT, IN `p_posicion` VARCHAR(40))  BEGIN
+
+DECLARE numeroRegistros int;
+
+IF tipoOperacion = 1 THEN
+
+
+ SELECT COUNT(1) INTO numeroRegistros
+    FROM jugadores WHERE idJugador= p_idJugador;
+    
+    
+ IF numeroRegistros = 0 THEN
+   INSERT INTO jugadores VALUES (p_idJugador,p_nombres,p_dorsal,p_posicion);
+  
+
+    ELSE 
+	SET SQL_SAFE_UPDATES=0;
+    UPDATE jugadores SET idJugador= p_idJugador,nombres = p_nombres,dorsal = p_dorsal,posicion = p_posicion
+    WHERE  idJugador= p_idJugador;
+
+    END IF;
+END IF;
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -39,7 +99,10 @@ CREATE TABLE `equipo` (
 --
 
 INSERT INTO `equipo` (`idEquipo`, `nombre`, `nombreEntrenador`) VALUES
-(1, 'Real madrid', 'Zidane');
+(1, 'Real madrid', 'Zidane'),
+(3, 'CARLOS', 'asdsd'),
+(32, 'CARLOS', 'Carlos'),
+(43, 'MADRID', 'PIRLO');
 
 -- --------------------------------------------------------
 
@@ -53,6 +116,17 @@ CREATE TABLE `jugadores` (
   `dorsal` int(10) NOT NULL,
   `posicion` varchar(40) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `jugadores`
+--
+
+INSERT INTO `jugadores` (`idJugador`, `nombres`, `dorsal`, `posicion`) VALUES
+(12, 'asd', 0, '3'),
+(45, 'xcz', 0, '6'),
+(256, 'CARLOS ANDRES', 100, 'MEDIO'),
+(443, 'Coasdas', 56, 'latera'),
+(1312, 'Coadj', 32, 'latera');
 
 -- --------------------------------------------------------
 
@@ -99,7 +173,7 @@ ALTER TABLE `tablamarcadores`
 -- AUTO_INCREMENT de la tabla `equipo`
 --
 ALTER TABLE `equipo`
-  MODIFY `idEquipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idEquipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

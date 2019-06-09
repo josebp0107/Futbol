@@ -1,9 +1,12 @@
 <%-- 
-    Document   : registrarEquipo
-    Created on : 28/05/2019, 10:53:59 PM
-    Author     : Jose David Ballesteros
+    Document   : ProcedimientoConsultarEquipo
+    Created on : 9/06/2019, 04:10:21 PM
+    Author     : KOGARASUMARU
 --%>
 
+<%@page import="edu.CECAR.logica.Equipo"%>
+<%@page import="edu.CECAR.logica.SentenciaPreparada"%>
+<%@page import="edu.CECAR.persistencia.ConexionMySQL"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,7 +15,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <link href="estilos.css" rel="stylesheet" type="text/css"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Registrar Equipo</title>
+        <title>Consultar Equipo</title>
     </head>
     <body>
         <div id="principal">
@@ -29,15 +32,21 @@
             </nav>
         </div>
 
-        <form action="procedimientoRegistrarEquipo.jsp" method="post" style="width: 700px; margin: 0 auto;">
+        <%
+            Equipo equipo = SentenciaPreparada.getProcedimientoConsultarEquipo(request.getParameter("idEquipo"));
+            if (equipo != null) {
+        %>
+        <form style="width: 700px; margin: 0 auto;">
             <label>Codigo del equipo</label>
-            <input type="text" class="form-control" name="codigo" placeholder="Codigo del equipo">
+            <input type="text" class="form-control" name="idJugador" value="<%=equipo.getIdentificacion()%>">
             <label>Nombre del equipo</label>
-            <input type="text" class="form-control" name="nombreEquipo" placeholder="Nombre del equipo">
+            <input type="text" class="form-control" name="nombreEquipo" value="<%=equipo.getNombreEquipo()%>">
             <label>Nombre del entrenador</label>
-            <input type="text" class="form-control" name="nombreEntrenador" placeholder="Nombre del entrenador"><br>
-            <input type="submit" class="btn btn-primary" value="Registrar">
-            <input type="reset" class="btn btn-danger" value="Eliminar">
+            <input type="text" class="form-control" name="nombreEntrenador" value="<%=equipo.getNombreEntrenador()%>"><br>
         </form>
+        <% } else {
+                response.sendRedirect("noEncontrado.html");
+            }
+        %>
     </body>
 </html>
